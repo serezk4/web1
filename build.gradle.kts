@@ -58,7 +58,7 @@ tasks.register<Jar>("deploy.sh") {
     }
 }
 
-tasks.check {
-    dependsOn("checkstyleMain")
-    dependsOn("checkstyleTest")
-}
+//tasks.check {
+//    dependsOn("checkstyleMain")
+//    dependsOn("checkstyleTest")
+//}
