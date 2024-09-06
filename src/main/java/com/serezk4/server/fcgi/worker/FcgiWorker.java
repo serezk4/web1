@@ -8,6 +8,7 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A FastCGI worker.
@@ -42,7 +43,18 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
     private void loop() throws IOException {
         try {
             final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
-            System.out.println(decode(process(request)));
+            final RS response = process(request);
+            final String decoded = decode(response);
+            final String decodedWithHeaders = """
+                    HTTP/2 200 OK
+                    Content-Type: application/json
+                    Content-Length: %d
+                   
+                    %s
+                    
+                    """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
+
+            System.out.println(decodedWithHeaders);
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
