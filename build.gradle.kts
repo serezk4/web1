@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.serezk4"
-version = "2281337"
+version = "2281337itmoflex"
 
 
 repositories {
