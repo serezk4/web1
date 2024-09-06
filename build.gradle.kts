@@ -28,7 +28,7 @@ tasks.test {
 tasks.jar {
     manifest {
         attributes(
-            "Main-Class" to "com.serezk4.server.worker.TestWorker"
+            "Main-Class" to "com.serezk4.server.Server"
         )
     }
 }
@@ -38,7 +38,7 @@ tasks.register<Jar>("deploy.sh") {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes(
-            "Main-Class" to "com.serezk4.server.worker.TestWorker"
+            "Main-Class" to "com.serezk4.server.Server"
         )
     }
     from(sourceSets.main.get().output)
@@ -58,7 +58,7 @@ tasks.register<Jar>("deploy.sh") {
     }
 }
 
-//tasks.check {
-//    dependsOn("checkstyleMain")
-//    dependsOn("checkstyleTest")
-//}
+tasks.check {
+    dependsOn("checkstyleMain")
+    dependsOn("checkstyleTest")
+}
