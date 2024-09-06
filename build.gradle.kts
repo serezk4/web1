@@ -28,7 +28,7 @@ tasks.test {
 tasks.jar {
     manifest {
         attributes(
-            "Main-Class" to "com.serezk4.server.Server"
+            "Main-Class" to "com.serezk4.server.FcgiServer"
         )
     }
 }
@@ -38,7 +38,7 @@ tasks.register<Jar>("deploy.sh") {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes(
-            "Main-Class" to "com.serezk4.server.Server"
+            "Main-Class" to "com.serezk4.server.FcgiServer"
         )
     }
     from(sourceSets.main.get().output)
