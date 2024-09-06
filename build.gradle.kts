@@ -60,3 +60,8 @@ tasks.register<Jar>("deploy.sh") {
         archiveFile.get().asFile.copyTo(targetFile, overwrite = true)
     }
 }
+
+tasks.check {
+    dependsOn("checkstyleMain")
+    dependsOn("checkstyleTest")
+}
