@@ -19,7 +19,7 @@ jobs:
 
       - name: Gradle custom build
         run: ./gradlew deploy
-        working-directory: ./
+        working-directory: .
 
       - name: Rsync to the server
         uses: burnett01/rsync-deployments@7.0.1

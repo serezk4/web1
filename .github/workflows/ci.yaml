@@ -19,8 +19,8 @@ jobs:
 
       - name: Lint with Checkstyle
         run: ./gradlew checkstyleMain checkstyleTest
-        working-directory: ./
+        working-directory: .
 
       - name: Run tests
         run: ./gradlew test
-        working-directory: ./
+        working-directory: .
