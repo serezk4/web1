@@ -37,9 +37,8 @@ public class FcgiUtil {
     /**
      * Reads the request parameters from the FastCGI request.
      * @return The request parameters.
-     * @throws IOException If an I/O error occurs.
      */
-    public static Properties readRequestParams() throws IOException {
+    public static Properties readRequestParams() {
         return FCGIInterface.request.params;
     }
 }
