@@ -1,8 +1,5 @@
 #!/bin/bash
 
-killall java
-killall httpd
-
 LOG_FILE="$HOME/deploy.log"
 
 echo "Starting deployment script" | tee -a $LOG_FILE
