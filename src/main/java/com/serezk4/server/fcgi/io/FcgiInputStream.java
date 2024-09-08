@@ -55,7 +55,7 @@ public class FcgiInputStream extends InputStream {
      *
      * @param inStream the input stream  bufLen  length of buffer streamType
      */
-    public FcgiInputStream(FileInputStream inStream, int bufLen,
+    public FcgiInputStream(InputStream inStream, int bufLen,
                            int streamType,
                            FcgiRequest inReq) {
 

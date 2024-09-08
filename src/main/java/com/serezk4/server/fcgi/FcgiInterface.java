@@ -41,11 +41,11 @@ public class FcgiInterface {
     public static Properties startupProps;
     public static ServerSocket srvSocket;
 
-//    private static FcgiInterface instance;
-//    private FcgiInterface() {}
-//    public static FcgiInterface getInstance() {
-//        return instance == null ? instance = new FcgiInterface() : instance;
-//    }
+    private static FcgiInterface instance;
+    private FcgiInterface() {}
+    public static FcgiInterface getInstance() {
+        return instance == null ? instance = new FcgiInterface() : instance;
+    }
 
     /*
      * Accepts a new request from the HTTP server and creates
