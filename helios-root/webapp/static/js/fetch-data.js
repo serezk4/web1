@@ -28,14 +28,9 @@ $(document).ready(function() {
         const startTime = new Date().getTime();
 
         $.ajax({
-            url: '/fcgi-bin/server.jar',
+            url: '/fcgi-bin/server.jar?x=' + x + '&y=' + y + '&r=' + r,
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({
-                x: x,
-                y: y,
-                r: r
-            }),
             success: function(data) {
                 const endTime = new Date().getTime();
                 const time = endTime - startTime;
