@@ -1,6 +1,6 @@
 package com.serezk4.server.fcgi.util;
 
-import com.serezk4.server.fcgi.FcgiInterface;
+import com.fastcgi.FCGIInterface;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -21,11 +21,11 @@ public class FcgiUtil {
      * @throws IOException If an I/O error occurs.
      */
     public static String readRequestBody() throws IOException {
-        FcgiInterface.request.inStream.fill();
+        FCGIInterface.request.inStream.fill();
 
-        var contentLength = FcgiInterface.request.inStream.available();
+        var contentLength = FCGIInterface.request.inStream.available();
         var buffer = ByteBuffer.allocate(contentLength);
-        var readBytes = FcgiInterface.request.inStream.read(buffer.array(), 0, contentLength);
+        var readBytes = FCGIInterface.request.inStream.read(buffer.array(), 0, contentLength);
 
         var requestBodyRaw = new byte[readBytes];
         buffer.get(requestBodyRaw);
@@ -40,6 +40,6 @@ public class FcgiUtil {
      * @throws IOException If an I/O error occurs.
      */
     public static Properties readRequestParams() throws IOException {
-        return FcgiInterface.request.params;
+        return FCGIInterface.request.params;
     }
 }
