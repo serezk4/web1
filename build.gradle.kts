@@ -19,6 +19,11 @@ dependencies {
 
     implementation("org.projectlombok:lombok:1.18.34")
     compileOnly("org.projectlombok:lombok")
+
+    implementation(files("lib/fastcgi-lib.jar"))
+
+    implementation("com.fasterxml.jackson.core:jackson-core:2.17.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
 }
 
 tasks.test {
