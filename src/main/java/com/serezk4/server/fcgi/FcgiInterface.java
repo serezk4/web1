@@ -206,7 +206,7 @@ public class FcgiInterface {
              */
             request.isBeginProcessed = false;
             request.inStream =
-                    new FcgiInputStream((FileInputStream) request.
+                    new FcgiInputStream(request.
                             socket.getInputStream(),
                             8192, 0, request);
             request.inStream.fill();
