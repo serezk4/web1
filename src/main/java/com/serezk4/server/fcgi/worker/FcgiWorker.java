@@ -45,12 +45,6 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
      */
     private void loop() throws IOException {
         try {
-            File file = new File("~/my.log");
-            if (Files.notExists(file.toPath()))
-                Files.createFile(file.toPath());
-
-            BufferedWriter writer = Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8);
-
             final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
             final RS response = process(request);
             final String decoded = decode(response);
@@ -62,8 +56,6 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
                     %s
                     
                     """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
-
-            writer.append(decodedWithHeaders).flush();
 
             System.out.println(decodedWithHeaders);
         } catch (ValidationException e) {
