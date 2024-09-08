@@ -1,7 +1,5 @@
 package com.serezk4.server.fcgi.util;
 
-import com.serezk4.server.fcgi.FcgiInterface;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;

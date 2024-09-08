@@ -1,4 +1,4 @@
-package com.serezk4.server.fcgi.message.converter;
+package com.serezk4.server.fcgi;
 
 import com.serezk4.server.fcgi.exc.ValidationException;
 

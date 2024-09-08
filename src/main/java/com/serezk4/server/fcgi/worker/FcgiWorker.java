@@ -1,8 +1,8 @@
 package com.serezk4.server.fcgi.worker;
 
-import com.serezk4.server.fcgi.FcgiInterface;
+import com.fastcgi.FCGIInterface;
 import com.serezk4.server.fcgi.exc.ValidationException;
-import com.serezk4.server.fcgi.message.converter.FcgiConverter;
+import com.serezk4.server.fcgi.FcgiConverter;
 import com.serezk4.server.fcgi.util.FcgiUtil;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -21,6 +21,8 @@ import java.nio.charset.StandardCharsets;
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, RS> {
+    private static final FCGIInterface FCGI_INTERFACE = new FCGIInterface();
+
     /**
      * Main method.
      * In loop reads the request body and processes it.
@@ -29,7 +31,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
     @Override
     public void run() {
         try {
-            while (FcgiInterface.getInstance().ready()) loop();
+            while (FCGI_INTERFACE.FCGIaccept() >= 0) loop();
         } catch (IOException e) {
             System.err.printf("Error: %s%n", e.getMessage());
         }
