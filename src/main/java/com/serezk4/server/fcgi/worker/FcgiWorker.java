@@ -54,7 +54,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
                     
                     """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
 
-            System.out.println(decodedWithHeaders);
+//            System.out.println(decodedWithHeaders);
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
