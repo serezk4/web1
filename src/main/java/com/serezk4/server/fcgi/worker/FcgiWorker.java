@@ -4,17 +4,11 @@ import com.serezk4.server.fcgi.FcgiInterface;
 import com.serezk4.server.fcgi.exc.ValidationException;
 import com.serezk4.server.fcgi.message.converter.FcgiConverter;
 import com.serezk4.server.fcgi.util.FcgiUtil;
-import com.serezk4.server.log.FIleLogger;
-import com.serezk4.server.log.Logger;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.java.Log;
 
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 
 /**
  * A FastCGI worker.
@@ -27,8 +21,6 @@ import java.nio.file.Files;
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, RS> {
-    private final Logger logger = new FIleLogger("worker");
-
     /**
      * Main method.
      * In loop reads the request body and processes it.
@@ -62,7 +54,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
 
                     """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
 
-            logger.log(decodedWithHeaders);
+            System.out.println(decodedWithHeaders);
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
