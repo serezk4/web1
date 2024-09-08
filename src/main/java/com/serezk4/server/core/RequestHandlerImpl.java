@@ -24,10 +24,14 @@ import java.nio.charset.StandardCharsets;
  * @since 1.0
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 public class RequestHandlerImpl implements RequestHandler {
     ContourService contourService;
     ValidationService validationService;
+
+    public RequestHandlerImpl(ContourService contourService, ValidationService validationService) {
+        this.contourService = contourService;
+        this.validationService = validationService;
+    }
 
     @Override
     public void handle() {
