@@ -52,21 +52,21 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
         try {
             logger.log("Request received");
 
-            final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
-            final RS response = process(request);
-            final String decoded = decode(response);
-            final String decodedWithHeaders = """
-                    HTTP/2 200 OK
-                    Content-Type: application/json
-                    Content-Length: %d
-                                       
-                    %s
-                                        
-                    """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
+//            final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
+//            final RS response = process(request);
+//            final String decoded = decode(response);
+//            final String decodedWithHeaders = """
+//                    HTTP/2 200 OK
+//                    Content-Type: application/json
+//                    Content-Length: %d
+//
+//                    %s
+//
+//                    """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
 
-            logger.log(decodedWithHeaders);
+//            logger.log(decodedWithHeaders);
 
-            System.out.println(decodedWithHeaders);
+            System.out.println("hello world!");
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
