@@ -50,23 +50,19 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
      */
     private void loop() throws IOException {
         try {
-            logger.log("Request received");
+            final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
+            final RS response = process(request);
+            final String decoded = decode(response);
+            final String decodedWithHeaders = """
+                    HTTP/2 200 OK
+                    Content-Type: application/json
+                    Content-Length: %d
 
-//            final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
-//            final RS response = process(request);
-//            final String decoded = decode(response);
-//            final String decodedWithHeaders = """
-//                    HTTP/2 200 OK
-//                    Content-Type: application/json
-//                    Content-Length: %d
-//
-//                    %s
-//
-//                    """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
+                    %s
 
-//            logger.log(decodedWithHeaders);
+                    """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
 
-            System.out.println("hello world!");
+            logger.log(decodedWithHeaders);
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
