@@ -52,7 +52,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
         try {
             logger.log("Request received");
 
-            final RQ request = encode(FcgiUtil.readRequestParams());validate(request);
+            final RQ request = encode(FcgiUtil.readRequestParams()); validate(request);
             final RS response = process(request);
             final String decoded = decode(response);
             final String decodedWithHeaders = """

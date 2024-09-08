@@ -40,14 +40,15 @@ public final class TestWorker extends FcgiWorker<ValidateCoordinatesRequest, Val
      */
     @Override
     public ValidateCoordinatesRequest encode(Properties params) {
-        if (!Stream.of("x", "y", "r").allMatch(var -> params.containsKey(var) && params.getProperty(var).matches("^-?\\d+(\\.\\d+)?$")))
-            throw new IllegalArgumentException("Not all required parameters are present or they are not numbers.");
-
-        return new ValidateCoordinatesRequest(
-                Float.parseFloat(params.getProperty("x")),
-                Float.parseFloat(params.getProperty("y")),
-                Float.parseFloat(params.getProperty("r"))
-        );
+//        if (!Stream.of("x", "y", "r").allMatch(var -> params.containsKey(var) && params.getProperty(var).matches("^-?\\d+(\\.\\d+)?$")))
+//            throw new IllegalArgumentException("Not all required parameters are present or they are not numbers.");
+//
+//        return new ValidateCoordinatesRequest(
+//                Float.parseFloat(params.getProperty("x")),
+//                Float.parseFloat(params.getProperty("y")),
+//                Float.parseFloat(params.getProperty("r"))
+//        );
+        return new ValidateCoordinatesRequest(0, 0, 0);
     }
 
     /**
@@ -73,7 +74,6 @@ public final class TestWorker extends FcgiWorker<ValidateCoordinatesRequest, Val
      */
     @Override
     public void validate(ValidateCoordinatesRequest request) throws ValidationException {
-        if (request.x() < -5 || request.x() > 5 || request.y() < -5 || request.y() > 5 || request.r() < 0 || request.r() > 5)
-            throw new ValidationException("Invalid parameters.");
+        return;
     }
 }
