@@ -19,8 +19,6 @@ dependencies {
 
     implementation("org.projectlombok:lombok:1.18.34")
     compileOnly("org.projectlombok:lombok")
-
-    implementation(files("lib/fastcgi-lib.jar"))
 }
 
 tasks.test {
