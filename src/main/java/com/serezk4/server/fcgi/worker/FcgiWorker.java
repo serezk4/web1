@@ -21,6 +21,8 @@ import java.nio.charset.StandardCharsets;
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, RS> {
+    private static final FcgiInterface FCGI_INTERFACE = new FcgiInterface();
+
     /**
      * Main method.
      * In loop reads the request body and processes it.
@@ -29,7 +31,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
     @Override
     public void run() {
         try {
-            while (FcgiInterface.getInstance().ready()) loop();
+            while (FCGI_INTERFACE.ready()) loop();
         } catch (IOException e) {
             System.err.printf("Error: %s%n", e.getMessage());
         }
