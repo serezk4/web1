@@ -20,7 +20,7 @@ echo "Apache httpd started" | tee -a $LOG_FILE
 sleep 1
 
 echo "Starting Java application" | tee -a $LOG_FILE
-java -XX:MaxHeapSize=1G -XX:MaxMetaspaceSize=128m -DFCGI_PORT=41338 -jar $HOME/webapp/fcgi-bin/server.jar >> $LOG_FILE 2>&1 &
+java -XX:MaxHeapSize=1G -XX:MaxMetaspaceSize=128m -DFCGI_PORT=49394 -jar $HOME/webapp/fcgi-bin/server.jar >> $LOG_FILE 2>&1 &
 echo "Java application started" | tee -a $LOG_FILE
 
 echo "Deployment script completed" | tee -a $LOG_FILE
