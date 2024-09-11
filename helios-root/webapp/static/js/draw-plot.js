@@ -1,8 +1,8 @@
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('graph');
 const ctx = canvas.getContext('2d');
 
-ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+ctx.strokeStyle = 'rgba(0,255,30,0.8)';
+ctx.fillStyle = 'rgba(5,46,0,0.8)';
 
 const radius = 200;
 
@@ -31,13 +31,13 @@ function drawArrows() {
 }
 
 keyPoints = [
-    {x: radius/2, y: 0},
-    {x: radius/2, y: -radius},
+    {x: radius / 2, y: 0},
+    {x: radius / 2, y: -radius},
     {x: 0, y: -radius},
-    {x: 0, y: -radius/2},
+    {x: 0, y: -radius / 2},
     {x: -radius, y: 0},
     {x: 0, y: 0},
-    {x: 0, y: radius/2}
+    {x: 0, y: radius / 2}
 ];
 
 function drawBrokenPath() {
@@ -48,13 +48,13 @@ function drawBrokenPath() {
 }
 
 function drawArc() {
-    ctx.arc(canvas.width / 2, canvas.height / 2, radius/2, 3*Math.PI/2, 0);
+    ctx.arc(canvas.width / 2, canvas.height / 2, radius / 2, 3 * Math.PI / 2, 0);
 }
 
 function drawPlot() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = 'rgba(105, 125, 255, 0.3)';
+    ctx.fillStyle = 'rgba(0, 255, 0, 0.5)';
 
     ctx.beginPath();
     drawAxis();
@@ -68,12 +68,12 @@ function drawPlot() {
 
 labels = [
     {x: 0, y: 0, text: '0'},
-    {x: radius/2, y: 0, text: 'R/2'},
+    {x: radius / 2, y: 0, text: 'R/2'},
     {x: 0, y: -radius, text: '-R'},
-    {x: 0, y: -radius/2, text: '-R/2'},
+    {x: 0, y: -radius / 2, text: '-R/2'},
     {x: -radius, y: 0, text: '-R'},
     {x: 0, y: 0, text: '0'},
-    {x: 0, y: radius/2, text: 'R/2'}
+    {x: 0, y: radius / 2, text: 'R/2'}
 ]
 
 function drawLabels() {
@@ -89,11 +89,11 @@ function drawLabels() {
 }
 
 function refreshLabels(R) {
-    labels[1].text = R/2;
+    labels[1].text = R / 2;
     labels[2].text = -R;
-    labels[3].text = -R/2;
+    labels[3].text = -R / 2;
     labels[4].text = -R;
-    labels[6].text = R/2;
+    labels[6].text = R / 2;
 }
 
 function refreshPoints(newR) {
@@ -104,6 +104,7 @@ function refreshPoints(newR) {
 }
 
 points = [];
+
 function drawPoints() {
     points.forEach((point) => {
         drawPoint(point);
@@ -130,6 +131,3 @@ function insertPoint(x, y, r) {
     points.push(point);
     drawPoint(point);
 }
-
-
-
