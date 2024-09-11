@@ -1,25 +1,105 @@
+/* ------------- Font Settings ------------- */
 @font-face {
     font-family: 'Monofonto';
     /*src: url('/static/font/monofonto.ttf') format('truetype');*/
 }
 
+/* ------------- Keyframes for Animations ------------- */
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+/* ------------- Cursor Blinking Animation ------------- */
+.cursor {
+    font-weight: 100;
+    font-size: 24px;
+    color: #0f0;
+    animation: blink 1s infinite;
+}
+
+/* ------------- Global Styles for Body ------------- */
 body {
+    filter: contrast(100%) brightness(120%);
+    image-rendering: pixelated;
     font-family: 'Monofonto', monospace;
     margin: 0;
     padding: 0;
     background-color: #000;
     color: #0f0;
     font-size: 18px;
+    transform: perspective(800px) scale(1.05);
+    transform-origin: center;
+    overflow-x: hidden;
+    animation: flicker 0.15s infinite;
 }
 
+/* ------------- Canvas Background Grid ------------- */
+canvas {
+    background-image: linear-gradient(to right, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px; /* Adjust based on desired grid size */
+}
+
+/* ------------- Scanlines Effect Over Body ------------- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2) 1px,
+            transparent 1px,
+            transparent 2px
+    );
+    z-index: 9999999;
+    pointer-events: none; /* Keep interaction unaffected */
+}
+
+/* ------------- Vignette Effect on Body ------------- */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ------------- Container Layout and Styling ------------- */
 .container {
     width: 50%;
     margin: auto;
-    padding: 10px;
     background-color: #000; /* Black background */
-    border-radius: 5px;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
 }
 
+/* ------------- Header Styling ------------- */
 header {
     text-align: center;
     font-size: 22px;
@@ -27,6 +107,7 @@ header {
     border-bottom: 2px solid #0f0;
 }
 
+/* ------------- Table and Graph Styling ------------- */
 table {
     width: 100%;
     margin: 20px 0;
@@ -39,12 +120,14 @@ table {
     border: 1px solid #0f0; /* Green border for graph */
 }
 
+/* ------------- Form and Input Styling ------------- */
 form {
     background-color: #001e00;
     padding: 15px;
     border-radius: 10px;
 }
 
+/* ------------- Canvas Placeholder Styling ------------- */
 .canvasPlaceholder {
     background-color: #001e00;
     padding: 15px;
@@ -53,6 +136,7 @@ form {
     justify-content: center;
 }
 
+/* ------------- Slider Placeholder and Sliders ------------- */
 .sliderPlaceholder {
     background: #003300;
     padding: 10px;
@@ -69,7 +153,7 @@ form {
     margin: 5px 5px 5px 0px;
 }
 
-/* Customize the thumb */
+/* ------------- Slider Thumb Customization ------------- */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -89,6 +173,7 @@ form {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
 }
 
+/* ------------- Slider Labels Styling ------------- */
 .slider-labels {
     display: flex;
     justify-content: space-between;
@@ -102,10 +187,12 @@ form {
     text-align: center;
 }
 
+/* ------------- Form Label Styling ------------- */
 label {
     color: #0f0;
 }
 
+/* ------------- Submit Button Styling ------------- */
 .btn-submit {
     background-color: #0f0;
     color: #003300;
@@ -122,12 +209,24 @@ label {
     color: #0f0;
 }
 
+.btn-submit:active {
+    box-shadow: 0 0 5px #0f0 inset;
+    transform: scale(0.98);
+}
+
+/* ------------- Hover Effect for Range Input and Button ------------- */
+input[type="range"]:hover, .btn-submit:hover {
+    box-shadow: 0 0 10px #0f0;
+}
+
+/* ------------- Table Result Styling ------------- */
 #resultTable th, #resultTable td {
     border: 1px solid #0f0;
     color: #0f0;
     background-color: #003300;
 }
 
+/* ------------- Anchor (Link) Styling ------------- */
 a {
     color: #73f34f;
     text-decoration: none;
@@ -138,6 +237,7 @@ a:hover {
     background-color: #73f34f;
 }
 
+/* ------------- Unordered and Ordered Lists ------------- */
 ul, ol {
     list-style-type: none;
 }
