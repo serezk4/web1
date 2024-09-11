@@ -1,9 +1,3 @@
-/* ------------- Font Settings ------------- */
-@font-face {
-    font-family: 'Monofonto';
-    src: url('/static/font/monofonto.ttf') format('truetype');
-}
-
 /* ------------- Keyframes for Animations ------------- */
 @keyframes flicker {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
