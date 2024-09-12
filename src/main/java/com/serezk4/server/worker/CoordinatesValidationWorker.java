@@ -44,7 +44,7 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
     @Override
     public ValidateCoordinatesRequest encode(Properties params) {
         if (!Stream.of("x", "y", "r").allMatch(var -> params.containsKey(var) && params.getProperty(var).matches("^-?\\d+(\\.\\d+)?$")))
-            throw new IllegalArgumentException("Not all required parameters are present or they are not numbers.");
+            throw new IllegalArgumentException("Not all required parameters are present or they are not numbers." + params.toString());
 
         return new ValidateCoordinatesRequest(
                 Double.parseDouble(params.getProperty("x")),
