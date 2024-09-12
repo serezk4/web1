@@ -4,6 +4,7 @@ import com.serezk4.server.fcgi.exc.ValidationException;
 import com.serezk4.server.fcgi.worker.FcgiWorker;
 import com.serezk4.server.worker.request.ValidateCoordinatesRequest;
 import com.serezk4.server.worker.response.ValidateCoordinatesResponse;
+import com.serezk4.server.worker.util.CoordinatesChecker;
 
 import java.util.Properties;
 import java.util.Set;
@@ -26,12 +27,11 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
      */
     @Override
     protected ValidateCoordinatesResponse process(ValidateCoordinatesRequest request) {
+        final long start = System.nanoTime();
         return new ValidateCoordinatesResponse(
-                request.x(),
-                request.y(),
-                request.r(),
-                request.x() >= 0 && request.y() >= 0 && request.x() <= request.r() && request.y() <= request.r() / 2,
-                0
+                request.x(), request.y(), request.r(),
+                CoordinatesChecker.check(request),
+                System.nanoTime() - start
         );
     }
 
@@ -62,11 +62,13 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
     @Override
     public String decode(ValidateCoordinatesResponse response) {
         return """
-                "x": %.2f,
-                "y": %.2f,
-                "r": %.2f,
-                "result": %b,
-                "bench": %d
+                <tr>
+                <td>%.1f</td>
+                <td>%.1f</td>
+                <td>%.1f</td>
+                <td>%b</td>
+                <td>%d</td>
+                </tr>
                 """.formatted(response.x(), response.y(), response.r(), response.result(), response.bench());
     }
 

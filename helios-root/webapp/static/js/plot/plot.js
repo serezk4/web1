@@ -144,6 +144,12 @@ function refreshLabels(R) {
     });
 }
 
+function refresh(R) {
+    refreshLabels(R);
+    refreshPoints(R);
+    drawPlot();
+}
+
 /**
  * Evaluate a mathematical formula in string form
  * @param formula {string} the formula to evaluate, e.g., "R/2" or "-R"

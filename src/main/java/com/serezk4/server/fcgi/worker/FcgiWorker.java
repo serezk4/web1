@@ -47,7 +47,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
             final String decoded = decode(response);
             final String decodedWithHeaders = """
                     HTTP/2 200 OK
-                    Content-Type: application/json
+                    Content-Type: text/html
                     Content-Length: %d
 
                     %s
@@ -55,7 +55,7 @@ public abstract class FcgiWorker<RQ, RS> implements Runnable, FcgiConverter<RQ, 
                     """.formatted(decoded.getBytes(StandardCharsets.UTF_8).length, decoded);
 
             System.out.println(decodedWithHeaders);
-        } catch (ValidationException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

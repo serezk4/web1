@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-document.onreadystatechange = function () {
+$(document).ready(function() {
     // Get elements
     const rValue = document.getElementById('rValue');
     const xValue = document.getElementById('xValue');
@@ -21,8 +21,7 @@ document.onreadystatechange = function () {
     yValue.textContent = ySlider.value;
 
     // Draw plot
-    drawPlot();
-    refreshLabels(rSlider.value);
+    refresh(rSlider.value);
 
     // Add event listeners
     xSlider.onmousedown = function() { xValue.classList.add('select'); }
@@ -38,8 +37,6 @@ document.onreadystatechange = function () {
     rSlider.oninput = function()     { rValue.textContent = this.value; refreshLabels(this.value); drawPlot(); }
 
     rValue.oninput = function() {
-        refreshLabels(this.value);
-        refreshPoints(this.value);
-        drawPlot();
+        refresh(this.value);
     }
-}
+});
