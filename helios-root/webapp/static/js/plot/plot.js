@@ -213,7 +213,7 @@ function drawPoint(point) {
  * @param r {number} - Radius
  * @param demo {boolean} - Is this a demo point?
  */
-function insertPoint(x, y, r, demo = false) {
+function insertPoint(x, y, r) {
     const point = {
         x: canvas.width / 2 + x * config.radius / r,
         y: canvas.height / 2 - y * config.radius / r,
@@ -221,7 +221,7 @@ function insertPoint(x, y, r, demo = false) {
         realY: y,
     };
 
-    if (!demo) points.push(point);
+    points.push(point);
     drawPoint(point);
 }
 

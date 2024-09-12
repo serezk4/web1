@@ -11,7 +11,7 @@ $(document).ready(function() {
     const r = $('#r');
 
     const form = $('#form');
-    const insert = $('#toInsert');
+    const insert = $('#resultTable tbody');
 
     form.on('submit', function (event) {
         event.preventDefault();
@@ -25,8 +25,8 @@ $(document).ready(function() {
             type: 'POST',
             contentType: 'text/html',
             success: function (data) {
-                insertPoint(xValue, yValue, rValue, data);
-                insert.innerHTML += data;
+                insertPoint(xValue, yValue, rValue);
+                insert.append(data);
             },
             error: function () {
                 alert('Error');
