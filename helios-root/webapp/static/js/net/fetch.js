@@ -26,7 +26,7 @@ $(document).ready(function() {
             contentType: 'text/html',
             success: function (data) {
                 insertPoint(xValue, yValue, rValue);
-                insert.append(data);
+                insert.prepend(data);
             },
             error: function () {
                 alert('Error');

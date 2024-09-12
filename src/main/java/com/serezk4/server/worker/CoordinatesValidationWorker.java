@@ -6,6 +6,8 @@ import com.serezk4.server.worker.request.ValidateCoordinatesRequest;
 import com.serezk4.server.worker.response.ValidateCoordinatesResponse;
 import com.serezk4.server.worker.util.CoordinatesChecker;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -67,9 +69,14 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
                 <td>%.1f</td>
                 <td>%.1f</td>
                 <td>%b</td>
+                <td>%s</td>
                 <td>%d</td>
                 </tr>
-                """.formatted(response.x(), response.y(), response.r(), response.result(), response.bench());
+                """.formatted(
+                response.x(), response.y(), response.r(),
+                response.result(),
+                ZonedDateTime.now(ZoneId.systemDefault()).toString(), response.bench()
+        );
     }
 
     /**
@@ -92,7 +99,8 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
      * @throws ValidationException if x is invalid
      */
     private void validateX(Double x) throws ValidationException {
-        if (!Set.of(-4d, -3d, -2d, -1d, 0d, 1d, 2d, 3d, 4d).contains(x)) throw new ValidationException("X is not in the valid range.");
+        if (!Set.of(-4d, -3d, -2d, -1d, 0d, 1d, 2d, 3d, 4d).contains(x))
+            throw new ValidationException("X is not in the valid range.");
     }
 
     /**
