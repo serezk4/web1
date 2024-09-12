@@ -1,3 +1,8 @@
+/**
+ * @author serezk4
+ * @version 1.0
+ */
+
 /* ------------- Keyframes for Animations ------------- */
 @keyframes flicker {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
@@ -13,7 +18,7 @@
         opacity: 100%;
     }
     50% {
-        opacity: 0%;
+        opacity: 0;
     }
     100% {
         opacity: 100%;
@@ -131,10 +136,10 @@ form {
 }
 
 /* ------------- Slider Placeholder and Sliders ------------- */
-.sliderPlaceholder {
+.inputPlaceholder {
     background: #003300;
     padding: 10px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
 }
 
 .slider {
@@ -144,7 +149,7 @@ form {
     border-radius: 5px;
     outline: none;
     background: #0f0;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 5px 5px 0;
 }
 
 /* ------------- Slider Thumb Customization ------------- */
@@ -186,6 +191,18 @@ label {
     color: #0f0;
 }
 
+label span {
+    font-size: 16px;
+    transition: all 0.5s ease; /* Плавный переход */
+}
+
+label span.select {
+    color: black;
+    background-color: green;
+    font-size: 18px;
+    padding: 5px;
+}
+
 /* ------------- Submit Button Styling ------------- */
 .btn-submit {
     background-color: #0f0;
@@ -195,7 +212,7 @@ label {
     font-size: 20px;
     cursor: pointer;
     width: 100%;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
 }
 
 .btn-submit:hover {
@@ -205,18 +222,19 @@ label {
 
 .btn-submit:active {
     box-shadow: 0 0 5px #0f0 inset;
-    transform: scale(0.98);
+    transform: scale(0.95);
 }
 
 /* ------------- Hover Effect for Range Input and Button ------------- */
 input[type="range"]:hover, .btn-submit:hover {
-    box-shadow: 0 0 10px #0f0;
+    /*box-shadow: 0 0 10px #0f0;*/
 }
 
 /* ------------- Table Result Styling ------------- */
 #resultTable th, #resultTable td {
-    border: 1px solid #0f0;
+    /*border: 1px solid #0f0;*/
     color: #0f0;
+    padding: 5px;
     background-color: #003300;
 }
 
