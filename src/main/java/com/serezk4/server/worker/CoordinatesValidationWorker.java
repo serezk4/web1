@@ -69,7 +69,7 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
                 <td>%.1f</td>
                 <td>%.1f</td>
                 <td>%.1f</td>
-                <td>%b</td>
+                <td>%s</td>
                 <td>%s</td>
                 <td>%d</td>
                 </tr>
