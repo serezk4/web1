@@ -1,0 +1,121 @@
+<!-- @author serezk4 -->
+<!-- @version 1.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @font-face {
+            font-family: 'Monofonto';
+            src: url('static/font/monofonto.otf') format('opentype');
+        }
+
+        body {
+            cursor: url('static/cursor/fnv.cur'), auto;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB Lab1</title>
+
+    <link rel="icon" href="/static/img/itmo-duck-large-black-bg.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/v1/normalize.css">
+    <link rel="stylesheet" href="/static/css/v1/style.css">
+</head>
+<body>
+<div class="container">
+    <!--  HEADER  -->
+    <header>
+        <div class="credentials">
+
+            <ul>
+                <li>Веб-программирование 1 @ <a href="variant.html">Вариант 21106</a></li>
+                <li>Выполнил <a href="https://my.itmo.ru/persons/412934">Дорохин Сергей Константинович</a>
+                    @ <a href="https://github.com/serezk4">github</a></li>
+                <li>переключиться на: <a href="index.html">v2.0</a>, <a href="index0.html">v1.0 (текущая)</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!--  MAIN  -->
+    <main>
+        <table>
+            <tr>
+                <td>
+                    <div class="canvasPlaceholder">
+                        <canvas id="graph" width="500" height="500" class="graph"></canvas>
+                    </div>
+                </td>
+                <td>
+                    <form id="form" autocomplete="off">
+                        <!-- X Slider -->
+                        <div class="inputPlaceholder">
+                            <label for="x">Изменение X: <span id="xValue">0</span></label><br>
+                            <input type="range" id="x" name="x" min="-4" max="4" step="1" value="0" class="slider">
+                            <div class="slider-labels">
+                                <span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <!-- Y Slider -->
+                        <div class="inputPlaceholder">
+                            <label for="y">Изменение Y: <span id="yValue">0</span></label><br>
+                            <input type="range" id="y" name="y" min="-5" max="3" step="0.5" value="0" class="slider">
+                            <div class="slider-labels">
+                                <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <!-- R Slider -->
+                        <div class="inputPlaceholder">
+                            <label for="r">Изменение R: <span id="rValue">1</span></label><br>
+                            <input type="range" id="r" name="r" min="1" max="3" step="0.5" value="1" class="slider">
+                            <div class="slider-labels">
+                                <span>1</span><span>1.5</span><span>2</span><span>2.5</span><span>3</span>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <button id="submit" type="submit" class="btn-submit"><strong>Отправить</strong></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <div id="results">
+            <h2><strong>~> Результаты<span class="cursor">_</span></strong></h2>
+            <table id="resultTable">
+                <thead>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Результат</th>
+                    <th>Время</th>
+                    <th>Время выполнения (нс)</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Results will be appended here -->
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<!-- JS Scripts -->
+
+<script src="static/js/v1/lib/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="static/js/v1/plot/update.js"></script>
+<script type="text/javascript" src="static/js/v1/plot/plot.js"></script>
+<script type="text/javascript" src="static/js/v1/net/fetch.js"></script>
+
+<!-- JS Scripts -->
+
+</body>
+</html>

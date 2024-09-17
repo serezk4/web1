@@ -93,7 +93,6 @@ body::after {
     width: 50%;
     margin: auto;
     background-color: #000;
-    border-radius: 20px;
     overflow: hidden;
     padding: 10px;
 }
@@ -122,15 +121,13 @@ table {
 /* ------------- Form and Input Styling ------------- */
 form {
     background-color: #001e00;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 5px;
 }
 
 /* ------------- Canvas Placeholder Styling ------------- */
 .canvasPlaceholder {
     background-color: #001e00;
     padding: 15px;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
 }
