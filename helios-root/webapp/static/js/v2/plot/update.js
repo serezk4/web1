@@ -35,5 +35,13 @@ $(document).ready(function() {
         if (yInput.val().indexOf('.') !== -1 && yInput.val().split('.')[1].length > 3) {
             yInput.val(yInput.val().substring(0, yInput.val().indexOf('.') + 4));
         }
+
+        if ((yInput.val().match(/\./g) || []).length > 1) {
+            yInput.val(yInput.val().substring(0, yInput.val().lastIndexOf('.')));
+        }
+
+        if ((yInput.val().match(/\./g) || []).length === 1 && yInput.val().indexOf('.') === 0) {
+            yInput.val('0' + yInput.val());
+        }
     });
 });

@@ -6,6 +6,7 @@ import com.serezk4.server.worker.request.ValidateCoordinatesRequest;
 import com.serezk4.server.worker.response.ValidateCoordinatesResponse;
 import com.serezk4.server.worker.util.CoordinatesChecker;
 
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Properties;
@@ -74,8 +75,9 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
                 </tr>
                 """.formatted(
                 response.x(), response.y(), response.r(),
-                response.result(),
-                ZonedDateTime.now(ZoneId.systemDefault()).toString(), response.bench()
+                response.result() ? "✓" : "✗",
+                new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(ZonedDateTime.now(ZoneId.systemDefault()).toInstant()),
+                response.bench()
         );
     }
 
