@@ -9,6 +9,7 @@ import com.serezk4.server.worker.util.CoordinatesChecker;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -76,7 +77,7 @@ public final class CoordinatesValidationWorker extends FcgiWorker<ValidateCoordi
                 """.formatted(
                 response.x(), response.y(), response.r(),
                 response.result() ? "✓" : "✗",
-                new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(ZonedDateTime.now(ZoneId.systemDefault()).toInstant()),
+                new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(new Date()),
                 response.bench()
         );
     }
